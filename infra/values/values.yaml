@@ -25,7 +25,7 @@ applicationsets:
                   - ServerSideApply=true
                   - CreateNamespace=true
 
-        - name: gitlab
+        - name: gitlab-runner
           namespace: gitlab
           specYaml: |
             spec:
@@ -38,7 +38,7 @@ applicationsets:
                   targetRevision: 18.4.0
                   helm:
                     valueFiles:
-                      - $custom/argo-apps/gitlab/values.yaml
+                      - $custom/argo-apps/gitlab-runner/values.yaml
               syncPolicy:
                 syncOptions:
                   - ApplyOutOfSyncOnly=true
