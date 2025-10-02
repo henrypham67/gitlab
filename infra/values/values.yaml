@@ -12,6 +12,7 @@ applicationsets:
               sources:
                 - repoURL: https://github.com/henrypham67/gitlab
                   targetRevision: HEAD
+                  path: argo-apps/gitlab
                   ref: custom
                 - repoURL: http://charts.gitlab.io/
                   chart: gitlab
@@ -53,9 +54,9 @@ applicationsets:
           server: https://kubernetes.default.svc
           namespace: '{{.namespace}}'
         syncPolicy:
-          automated:
-            prune: true
-            selfHeal: true
+          # automated:
+          #   prune: true
+          #   selfHeal: true
     templatePatch: |
       {{.specYaml}}
     syncPolicy:

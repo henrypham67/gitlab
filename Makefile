@@ -45,7 +45,7 @@ get-kubeconfig: ## Get kubeconfig for EKS cluster
 
 kill-port-forwards: ## Kill processes running on ports 3000, 9090, and 8080
 	@echo "Killing processes on ports 3000, 9090, and 8080..."
-	-@for port in 3000 9090 8080; do \
+	-@for port in 8080; do \
 		PID=$$(lsof -ti tcp:$$port); \
 		if [ -n "$$PID" ]; then \
 			kill -9 $$PID && echo "Killed process on port $$port (PID: $$PID)"; \
@@ -56,10 +56,6 @@ kill-port-forwards: ## Kill processes running on ports 3000, 9090, and 8080
 
 port-forward: get-kubeconfig kill-port-forwards ## Port-forward Grafana, Kiali, Prometheus, ArgoCD and print endpoints
 	@echo "Starting port-forwards..."
-	kubectl port-forward svc/kube-prometheus-stack-grafana -n monitoring 3000:80 & \
-	kubectl port-forward svc/prometheus-operated -n monitoring 9090:9090 & \
 	kubectl port-forward svc/argo-cd-argocd-server -n argocd 8080:443 & \
 	sleep 3; \
-	echo "Grafana:      http://localhost:3000"; \
-	echo "Prometheus:   http://localhost:9090"; \
 	echo "ArgoCD:       http://localhost:8080";

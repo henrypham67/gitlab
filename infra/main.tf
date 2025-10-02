@@ -4,7 +4,7 @@ module "cluster" {
   name     = var.cluster_name
   vpc_cidr = "10.1.0.0/16"
 
-  desired_nodes = 5
+  desired_nodes = 9
   max_nodes     = 9
 }
 
