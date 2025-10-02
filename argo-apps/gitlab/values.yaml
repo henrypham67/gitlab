@@ -1,3 +1,2 @@
-global:
-  email:
-    from: minhhieu060799@gmail.com
+certmanager-issuer:
+  email: minhhieu060799@gmail.com
