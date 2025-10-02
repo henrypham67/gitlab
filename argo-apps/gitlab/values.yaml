@@ -5,6 +5,9 @@ global:
     enabled: true
     create: true
 
+  pages:
+    enabled: false
+
   appConfig:
     artifacts:
       bucket: my-gitlab-bucket-199907060500
