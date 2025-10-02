@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  connection: cHJvdmlkZXI6IEFXUwpyZWdpb246IHVzLWVhc3QtMQp1c2VfaWFtX3Byb2ZpbGU6IHRydWU=
+kind: Secret
+metadata:
+  name: gitlab-object-storage
+type: Opaque

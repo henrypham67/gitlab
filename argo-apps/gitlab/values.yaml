@@ -1,2 +1,71 @@
+global:
+  minio:
+    enabled: false
+  serviceAccount:
+    enabled: true
+    create: true
+
+  appConfig:
+    artifacts:
+      bucket: my-gitlab-bucket-199907060500
+    backups:
+      bucket: my-gitlab-bucket-199907060500
+      tmpBucket: my-gitlab-bucket-199907060500
+    ciSecureFiles:
+      bucket: my-gitlab-bucket-199907060500
+      enabled: true
+    dependencyProxy:
+      bucket: my-gitlab-bucket-199907060500
+      enabled: true
+    externalDiffs:
+      bucket: my-gitlab-bucket-199907060500
+      enabled: true
+    lfs:
+      bucket: my-gitlab-bucket-199907060500
+    object_store:
+      connection:
+        secret: gitlab-object-storage
+      enabled: true
+      proxy_download: false
+    packages:
+      bucket: my-gitlab-bucket-199907060500
+    terraformState:
+      bucket: my-gitlab-bucket-199907060500
+      enabled: true
+    uploads:
+      bucket: my-gitlab-bucket-199907060500
+  pages:
+    enabled: true
+    objectStore:
+      enabled: true
+      bucket: my-gitlab-bucket-199907060500
+      connection:
+        secret: objectstore-pages
+  registry:
+    bucket: my-gitlab-bucket-199907060500
+gitlab:
+  toolbox:
+    backups:
+      objectStorage:
+        config:
+          secret: s3cmd-config
+          key: config
+registry:
+  storage:
+    secret: registry-storage
+    key: config
+
+
+s3:
+  bucket: "my-gitlab-bucket-199907060500"
+  v4auth: true
+  region: us-east-1
+
+objectStorage:
+  config:
+    provider: AWS
+    use_iam_profile: true 
+    region: us-east-1
+
 certmanager-issuer:
   email: minhhieu060799@gmail.com
