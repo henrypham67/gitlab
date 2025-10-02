@@ -5,9 +5,6 @@ global:
     enabled: true
     create: true
 
-  pages:
-    enabled: false
-
   appConfig:
     artifacts:
       bucket: my-gitlab-bucket-199907060500
@@ -75,6 +72,12 @@ prometheus:
 
 gitlab-runner:
   install: false
+
+redis:
+  master:
+    persistence:
+      storageClass: gp2
+      size: 5Gi
 
 certmanager-issuer:
   email: minhhieu060799@gmail.com
