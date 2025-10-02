@@ -67,5 +67,8 @@ objectStorage:
     use_iam_profile: true 
     region: us-east-1
 
+prometheus:
+  install: false
+
 certmanager-issuer:
   email: minhhieu060799@gmail.com
