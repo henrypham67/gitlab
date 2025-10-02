@@ -50,6 +50,11 @@ gitlab:
         config:
           secret: s3cmd-config
           key: config
+  gitaly:
+    persistence:
+      storageClass: gp2
+      size: 50Gi
+
 registry:
   storage:
     secret: registry-storage
