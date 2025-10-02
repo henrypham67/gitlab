@@ -1,0 +1,11 @@
+.terraform
+.idea
+
+.envrc
+kubeconfig
+.terraform.*
+*tfstate*
+
+*.csr
+*.pem
+*.crt

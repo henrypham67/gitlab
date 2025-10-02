@@ -1,0 +1,62 @@
+applicationsets:
+  root-app:
+    namespace: argocd
+    goTemplate: true
+    generators:
+    - list:
+        elements:
+        - name: gitlab
+          namespace: gitlab
+          specYaml: |
+            spec:
+              sources:
+                - repoURL: https://github.com/henrypham67/gitlab
+                  targetRevision: HEAD
+                  ref: custom
+                - repoURL: http://charts.gitlab.io/
+                  chart: gitlab
+                  targetRevision: 9.4.1
+                  helm:
+                    valueFiles:
+                      - $custom/argo-apps/gitlab/values.yaml
+              syncPolicy:
+                syncOptions:
+                  - ApplyOutOfSyncOnly=true
+                  - ServerSideApply=true
+                  - CreateNamespace=true
+
+        - name: gitlab
+          namespace: gitlab
+          specYaml: |
+            spec:
+              sources:
+                - repoURL: https://github.com/henrypham67/gitlab
+                  targetRevision: HEAD
+                  ref: custom
+                - repoURL: http://charts.gitlab.io/
+                  chart: gitlab-runner
+                  targetRevision: 18.4.0
+                  helm:
+                    valueFiles:
+                      - $custom/argo-apps/gitlab/values.yaml
+              syncPolicy:
+                syncOptions:
+                  - ApplyOutOfSyncOnly=true
+                  - ServerSideApply=true
+                  - CreateNamespace=true
+    template:
+      metadata:
+        name: '{{.name}}'
+      spec:
+        project: default
+        destination:
+          server: https://kubernetes.default.svc
+          namespace: '{{.namespace}}'
+        syncPolicy:
+          automated:
+            prune: true
+            selfHeal: true
+    templatePatch: |
+      {{.specYaml}}
+    syncPolicy:
+      preserveResourcesOnDeletion: true
