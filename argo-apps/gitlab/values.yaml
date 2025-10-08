@@ -31,8 +31,7 @@ nginx-ingress:
 prometheus:
   install: false
 gitlab-runner:
-  install: true
-  gitlabUrl: http://gitlab-webservice-default:8181
+  install: false
 # Reduce replica counts, reducing CPU & memory requirements
 gitlab:
   webservice:
