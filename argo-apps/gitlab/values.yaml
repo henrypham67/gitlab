@@ -8,6 +8,7 @@
 # Minimal settings
 global:
   ingress:
+    configureCertmanager: false
     enabled: false
   hosts:
     domain: localhost
