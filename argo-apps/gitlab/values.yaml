@@ -52,3 +52,6 @@ registry:
   hpa:
     minReplicas: 1
     maxReplicas: 1
+
+upgradeCheck:
+  enabled: false
