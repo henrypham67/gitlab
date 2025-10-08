@@ -57,6 +57,7 @@ resource "helm_release" "argocd" {
 }
 
 resource "helm_release" "appset" {
+  depends_on = [ helm_release.argocd ]
   chart            = "argocd-apps"
   name             = "appset"
   repository       = "https://argoproj.github.io/argo-helm"

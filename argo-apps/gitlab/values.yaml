@@ -8,7 +8,7 @@
 # Minimal settings
 global:
   ingress:
-    configureCertmanager: false
+    enabled: false
   hosts:
     domain: localhost
     externalIP: 192.168.49.2
