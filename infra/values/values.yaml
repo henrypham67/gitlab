@@ -36,7 +36,7 @@ applicationsets:
                   ref: custom
                 - repoURL: http://charts.gitlab.io/
                   chart: gitlab-runner
-                  targetRevision: 18.4.0
+                  targetRevision: 0.81.0
                   helm:
                     valueFiles:
                       - $custom/argo-apps/gitlab-runner/values.yaml

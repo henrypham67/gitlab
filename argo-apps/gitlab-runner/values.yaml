@@ -1,0 +1,14 @@
+gitlabUrl: http://gitlab-webservice-default:8181
+runnerRegistrationToken: "glrt-KPt4QG1OH61Q3YYJQt8eiW86MQpwOjEKdDozCnU6MQ8.01.1704ukldh"  # Paste your token here
+
+rbac:
+  create: true  # Creates necessary RBAC rules for pod creation
+
+runners:
+  tags: "dind-k8s-runner"  # Tag to identify this runner in CI jobs
+  config: |
+    [[runners]]
+      
+      [runners.kubernetes]
+        image = "ubuntu:20.04"  # Default image for jobs (can be overridden in .gitlab-ci.yml)
+        privileged = true  # Required for DinD to work
